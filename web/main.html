@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/custom.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+    <title>YouTube Downloader</title>
+  </head>
+
+  <body onload="setInterval(update_thumbnail, 1)">
+
+    <!-- HEAD -->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="img/download.svg" width="30" height="30" class="d-inline-block align-top mr-3" alt="">
+        Simple YouTube Download Client <span id="version-badge" class="badge badge-pill badge-primary">v1.0</span>
+      </a>
+    </nav>
+    <!-- MAIN -->
+    <div class="container">
+      <div class="row mt-3"> <!-- url input field -->
+        <div class="col">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">🌐</span>
+            </div>
+            <input onchange="reset_progressbar()" type="text" class="form-control" id="url-field" placeholder="https://www.youtube.com/watch?v=VIDEO_ID" required>
+          </div>
+        </div>
+      </div>
+      <!-- new row -->
+      <div class="row mb-3"> <!-- video thumbnail window -->
+        <div class="col text-center">
+          <img id="video-thumbnail" src="img/noinput.png" width="480" height="360" class="border border-dark">
+        </div>
+      </div>
+      <!-- new row -->
+      <div class="row"> <!-- main buttons -->
+        <div class="col"></div> <!-- empty column -->
+        <div class="col"></div> <!-- empty column -->
+        <div class="col">
+          <button type="button" class="btn btn-outline-primary" onclick="open_dir_browser()">Save to</button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-primary" name="button" onclick="start_download()">Download</button>
+        </div>
+        <div class="col"></div><!-- empty column -->
+        <div class="col"></div> <!-- empty column -->
+      </div>
+      <!-- new row -->
+      <div class="progress mt-3"> <!-- progress bar -->
+        <div id="progress_bar0" class="progress-bar" role="progressbar" style="width: 0%"></div>
+      </div>
+      <!-- new row -->
+      <div class="row mt-3 mb-3"> <!-- status text field -->
+        <input type="text" id="status-field" class="form-control classname bg-dark custom-console"  value="" readonly />
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="page-footer font-small">
+      <div class="footer-copyright text-center py-3">
+        <div class="col text-center mb-2"><a href="https://github.com/tomg404" target="_blank"><img title="click me" src="img/github.svg"></a></div>
+        <p>Made with ❤️ and Bootstrap</p>
+      </div>
+    </footer>
+
+    <!-- include bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap.min.css">
+    <script type="text/javascript" src="/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
