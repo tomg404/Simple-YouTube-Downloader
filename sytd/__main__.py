@@ -1,15 +1,16 @@
-
+import os
 import eel
 from pathlib import Path
 from tkinter import Tk, filedialog
 import youtube_dl as yt
 import configparser
-from __init__ import __version__ as VERSION
 
 # Variables
-CONFIG_PATH = Path(__file__).cwd().joinpath('config.ini')
-WEB_PATH = Path(__file__).cwd().joinpath('web')
+CONFIG_LOCATION = 'config.ini'
+CONFIG_PATH = os.path.dirname(os.path.realpath(__file__)) + '/' + CONFIG_LOCATION
 
+WEB_LOCATION = 'web'
+WEB_PATH = os.path.dirname(os.path.realpath(__file__)) + '/' + WEB_LOCATION
 eel.init(WEB_PATH)
 
 @eel.expose
@@ -52,6 +53,12 @@ def open_dir_browser():
         config.write(configfile)
     update_status_output()
 
+# return version number from config.ini
+def get_version():
+    config = configparser.ConfigParser()
+    config.read(CONFIG_PATH)
+    return config['MAIN']['version']
+
 # return the current output path
 def get_save_path():
     config = configparser.ConfigParser()
@@ -65,16 +72,18 @@ def update_status_output():
 
 # checks if config file exists. if not creates it
 def check_config():
-    if not CONFIG_PATH.exists():
+    if not os.path.isfile(CONFIG_PATH):
         print('missing config.ini, creating new')
         with open(CONFIG_PATH, 'a') as f:
             f.write('[MAIN]\n')
-            f.write('save_path = ')
+            f.write('version = 1.0.0\n')
+            f.write('save_path = \n')
 
 def main():
     check_config()
     update_status_output()
-    eel.update_version_badge(VERSION)
+    VERSION = get_version()
+    eel.update_version_badge('v' + VERSION)
     try:
         eel.start('main.html', mode='chrome')
     except (SystemExit, KeyboardInterrupt):
