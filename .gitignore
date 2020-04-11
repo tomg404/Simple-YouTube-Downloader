@@ -1,5 +1,7 @@
 # Custom
 config.ini
+pypi-upload.txt
+run_.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
