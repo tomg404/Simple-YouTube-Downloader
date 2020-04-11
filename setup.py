@@ -47,6 +47,6 @@ setup(
     keywords=['youtube', 'download', 'client', 'easy'],
     packages=find_packages(where='sytd'),
     python_requires='>=3.5',
-    install_requires=['eel', 'youtube_dl'],
+    install_requires=['Eel==0.11.0', 'youtube_dl==2020.3.24'],
 
 )
