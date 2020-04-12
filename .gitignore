@@ -2,6 +2,8 @@
 config.ini
 pypi-upload.txt
 run_.py
+setup_test.py
+build-with-eel.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
