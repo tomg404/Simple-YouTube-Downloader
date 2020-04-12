@@ -14,7 +14,7 @@ async function open_dir_browser() {
 }
 
 // get video_id from url (thanks https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url)
-function youtube_parser(url){
+function youtube_url_parser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
     return (match&&match[7].length==11)? match[7] : false;
@@ -23,8 +23,11 @@ function youtube_parser(url){
 // changes thumbnail (runs every second (not the best solution i know))
 function update_thumbnail() {
   let url = document.getElementById('url-field').value;
-  let video_id = youtube_parser(url);
-  let picture_url = 'https://img.youtube.com/vi/' + video_id + '/0.jpg';
+  let video_id = youtube_url_parser(url);
+  let picture_url = 'img/noinput.svg';
+  if(video_id != false) {
+    picture_url = 'https://img.youtube.com/vi/' + video_id + '/0.jpg';
+  }
   document.getElementById('video-thumbnail').src = picture_url;
 }
 
