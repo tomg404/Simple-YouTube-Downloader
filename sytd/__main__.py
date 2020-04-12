@@ -5,7 +5,7 @@ from tkinter import Tk, filedialog
 import youtube_dl as yt
 import configparser
 from threading import Thread
-from __init__ import __version__ as version
+from sytd import __version__ as version
 
 # setup eels root folder and config location
 web_location = 'web'
@@ -70,8 +70,13 @@ def get_save_path():
     return path
 
 # change output path on the status text field
+@eel.expose
 def update_status_output():
     eel.update_status('Output: ' + get_save_path())
+
+@eel.expose
+def update_version_badge():
+    eel.update_version_badge('v' + version)
 
 # checks if config file exists. if not creates it
 def check_config():
@@ -82,8 +87,6 @@ def check_config():
 
 def run():
     check_config()
-    update_status_output()
-    eel.update_version_badge('v' + version)
     try:
         eel.start('main.html', mode='chrome', port=0, size=(600, 800))
     except (SystemExit, KeyboardInterrupt):
