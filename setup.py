@@ -26,6 +26,7 @@ setup(
     entry_points={
         'console_scripts': [
             'sytd=sytd.__main__:run',
+            'simple-youtube-downloader=sytd.__main__:run',
         ],
     },
 )
