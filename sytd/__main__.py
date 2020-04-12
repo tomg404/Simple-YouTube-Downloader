@@ -5,21 +5,24 @@ from tkinter import Tk, filedialog
 import youtube_dl as yt
 import configparser
 from threading import Thread
-from __init__ import __version__ as version
+from sytd import __version__ as version
 
 # setup eels root folder and config location
 web_location = 'web'
 web_path = os.path.dirname(os.path.realpath(__file__)) + '/' + web_location
 eel.init(web_path)
 
+# setup config path
 config_location = 'config.ini'
 config_path = os.path.dirname(os.path.realpath(__file__)) + '/' + config_location
+
 
 # starts the download function in a thread
 @eel.expose
 def download(url):
     t = Thread(target=download_thread, args=(url,))
     t.start()
+
 
 # actual downloading function
 def download_thread(url):
@@ -40,12 +43,14 @@ def download_thread(url):
         print('An error occured! Please check your URL. ❌')
         eel.update_status('An error occured! Please check your URL. ❌')
 
+
 # updates the progress bar as the download goes on
 def my_hook(d):
     total_bytes = int(d['total_bytes'])
     downloaded_bytes = int(d['downloaded_bytes'])
     percentage = round((downloaded_bytes / total_bytes) * 100)
     eel.update_progressbar(percentage)
+
 
 # opens a explorer window to select output directory
 @eel.expose
@@ -62,6 +67,7 @@ def open_dir_browser():
         config.write(configfile)
     update_status_output()
 
+
 # return the current output path
 def get_save_path():
     config = configparser.ConfigParser()
@@ -70,8 +76,16 @@ def get_save_path():
     return path
 
 # change output path on the status text field
+@eel.expose
 def update_status_output():
     eel.update_status('Output: ' + get_save_path())
+
+
+# updates version badge with current version (gets called in html body onload)
+@eel.expose
+def update_version_badge():
+    eel.update_version_badge('v' + version)
+
 
 # checks if config file exists. if not creates it
 def check_config():
@@ -80,14 +94,14 @@ def check_config():
         with open(config_path, 'a') as f:
             f.write('[MAIN]\nsave_path = \n')
 
+
 def run():
     check_config()
-    update_status_output()
-    eel.update_version_badge('v' + version)
     try:
         eel.start('main.html', mode='chrome', port=0, size=(600, 800))
     except (SystemExit, KeyboardInterrupt):
         pass
+
 
 if __name__ == '__main__':
     run()

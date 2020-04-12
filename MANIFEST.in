@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include sytd/web/*
+include sytd/web/css/*
+include sytd/web/img/*
+include sytd/web/js/*
