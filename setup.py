@@ -18,6 +18,7 @@ setup(
     install_requires=['Eel==0.11.0', 'youtube-dl==2020.3.24'],
     python_requires='>=3.5',
     classifiers=[
+        'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Operating System :: Microsoft :: Windows',
