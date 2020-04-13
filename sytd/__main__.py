@@ -1,11 +1,32 @@
+from __future__ import unicode_literals
 import os
+import sys
 import eel
 from pathlib import Path
 from tkinter import Tk, filedialog
 import youtube_dl as yt
 import configparser
 from threading import Thread
-from sytd import __version__ as version
+import datetime
+from . import __version__ as version
+
+
+class MyLogger(object):
+    def __init__(self):
+        pass
+
+    def debug(self, msg):
+        #print(msg)
+        pass
+
+    def warning(self, msg):
+        # print(msg)
+        pass
+
+    def error(self, msg):
+        print(msg)
+
+
 
 # setup eels root folder and config location
 web_location = 'web'
@@ -17,39 +38,56 @@ config_location = 'config.ini'
 config_path = os.path.dirname(os.path.realpath(__file__)) + '/' + config_location
 
 
-# starts the download function in a thread
+# actual downloading function
 @eel.expose
 def download(url):
-    t = Thread(target=download_thread, args=(url,))
-    t.start()
+    # YouTube_dl options
+    ydl_opts = {
+                'verbose': 'true',
+                'noplaylist': 'true',
+                'format': 'best',
+                'outtmpl': get_save_path() + '/%(title)s.%(ext)s',
+                'progress_hooks': [hook],
+                'logger': MyLogger(),
+                }
 
-
-# actual downloading function
-def download_thread(url):
     try:
-        ydl_opts = {'verbose': 'false',
-                    'noplaylist': 'true',
-                    'format': 'best',
-                    'outtmpl': get_save_path() + '/%(title)s.%(ext)s',
-                    'progress_hooks': [my_hook]
-                    }
         with yt.YoutubeDL(ydl_opts) as ydl:
-            eel.update_status('Downloading . . .')
             ydl.download([url])
 
-        eel.update_status('Download completed successfully ✔️')
+    except KeyboardInterrupt:
+        print('KeyboardInterrupt. ❌')
+        eel.update_status('KeyboardInterrupt. ❌')
+        sys.exit(0)
 
-    except:
-        print('An error occured! Please check your URL. ❌')
-        eel.update_status('An error occured! Please check your URL. ❌')
+    except yt.utils.DownloadError:
+        print('Not a valid URL. ❌')
+        eel.update_status('Not a valid URL. ❌')
 
 
 # updates the progress bar as the download goes on
-def my_hook(d):
-    total_bytes = int(d['total_bytes'])
-    downloaded_bytes = int(d['downloaded_bytes'])
-    percentage = round((downloaded_bytes / total_bytes) * 100)
-    eel.update_progressbar(percentage)
+def hook(d):
+    try:
+        total_bytes = int(d['total_bytes'])
+        downloaded_bytes = int(d['downloaded_bytes'])
+        percentage = round((downloaded_bytes / total_bytes) * 100)
+        eel.update_progressbar(percentage)
+
+        eel.update_status('')
+
+        if d['status'] == 'downloading':
+            filename = os.path.basename(d['filename'])
+            speed = str(round(d['speed'] / 1000000, 2))  # speed in mb/s
+            elapsed_time = str(datetime.timedelta(seconds=round(d['elapsed']))) # elapsed time
+            estimated_time = str(datetime.timedelta(seconds=d['eta'])) # estimated time
+            eel.update_status('Downloading ...\nSpeed: {} mb/s | {} / {}'.format(speed, elapsed_time, estimated_time))
+
+        if d['status'] == 'finished':
+            eel.update_status('Download completed successfully ✔️')
+
+    except KeyError:
+        print('Video probably already exists. ❌')
+        eel.update_status('Video probably already exists. ❌')
 
 
 # opens a explorer window to select output directory
@@ -98,7 +136,7 @@ def check_config():
 def run():
     check_config()
     try:
-        eel.start('main.html', mode='chrome', port=0, size=(600, 800))
+        eel.start('main.html', mode='chrome', port=0, size=(600, 820))
     except (SystemExit, KeyboardInterrupt):
         pass
 

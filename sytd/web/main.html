@@ -52,9 +52,12 @@
       <div class="progress mt-3"> <!-- progress bar -->
         <div id="progress_bar0" class="progress-bar" role="progressbar" style="width: 0%"></div>
       </div>
-      <!-- new row -->
-      <div class="row mt-3 mb-3"> <!-- status text field -->
-        <input type="text" id="status-field" class="form-control classname bg-dark custom-console"  value="" readonly />
+      <div class="row row mt-3 mb-3">
+        <div class="col">
+          <div class="form-group">
+            <textarea class="form-control bg-dark custom-console" id="status-field" rows=2 wrap="soft" readonly value=""></textarea>
+          </div>
+        </div>
       </div>
     </div>
 
