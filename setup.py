@@ -15,7 +15,7 @@ setup(
     keywords=['gui', 'downloader', 'youtube', 'simple'],
     packages=['sytd'],
     include_package_data=True,
-    install_requires=['Eel==0.11.0', 'bottle==0.12.18' 'youtube-dl==2020.3.24'],
+    install_requires=['Eel==0.11.0', 'bottle==0.12.18', 'youtube-dl==2020.3.24'],
     python_requires='>=3.5',
     classifiers=[
         'Development Status :: 4 - Beta',
