@@ -3,18 +3,23 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/sytd)
 
 # Simple YouTube Downloader
-![](images/demo.gif)
+![](images/demo-small.gif)
 
 ## Installation
 ```
 pip install sytd
+# or
+easy_install sytd
 ```
 
 ## Usage
 ```
 python -m sytd
-
+# or
 simple-youtube-downloader
-
+# or
 sytd
 ```
+
+## Contact
+If you have any suggestions of improvement [join my discord](https://discord.gg/DHnBsRZ)
