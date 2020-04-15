@@ -136,7 +136,7 @@ def check_config():
 def run():
     check_config()
     try:
-        eel.start('main.html', mode='chrome', port=0, size=(600, 820))
+        eel.start('main.html', mode='chrome', port=0, size=(600, 840))
     except (SystemExit, KeyboardInterrupt):
         pass
 
