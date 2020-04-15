@@ -3,7 +3,7 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/sytd)
 
 # Simple YouTube Downloader
-![](https://raw.githubusercontent.com/tomg404/Simple-YouTube-Downloader/master/images/screenshot_1.png)
+![](images/demo.gif)
 
 ## Installation
 ```
