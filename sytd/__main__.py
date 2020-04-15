@@ -1,4 +1,7 @@
 from __future__ import unicode_literals
+"""
+Main function of this project.
+"""
 import os
 import sys
 import eel
@@ -43,13 +46,13 @@ config_path = os.path.dirname(os.path.realpath(__file__)) + '/' + config_locatio
 def download(url):
     # YouTube_dl options
     ydl_opts = {
-                'verbose': 'true',
-                'noplaylist': 'true',
-                'format': 'best',
-                'outtmpl': get_save_path() + '/%(title)s.%(ext)s',
-                'progress_hooks': [hook],
-                'logger': MyLogger(),
-                }
+        'verbose': 'true',
+        'noplaylist': 'true',
+        'format': 'best',
+        'outtmpl': get_save_path() + '/%(title)s.%(ext)s',
+        'progress_hooks': [hook],
+        'logger': MyLogger(),
+        }
 
     try:
         with yt.YoutubeDL(ydl_opts) as ydl:

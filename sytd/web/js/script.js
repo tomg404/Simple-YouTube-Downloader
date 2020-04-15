@@ -1,16 +1,13 @@
 // starts pythons download function with url parameter
 function start_download(){
   let url = document.getElementById('url-field').value;
-  console.log("downloading video: " + url);
+  //console.log("downloading video: " + url);
   eel.download(url);
 }
 
 // opens directory selection window
 async function open_dir_browser() {
   var download_path = await eel.open_dir_browser()();
-    if (download_path) {
-      console.log(download_path);
-    }
 }
 
 // get video_id from url (thanks https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url)
@@ -25,7 +22,7 @@ function update_thumbnail() {
   let url = document.getElementById('url-field').value;
   let video_id = youtube_url_parser(url);
   let picture_url = 'img/noinput.svg';
-  if(video_id != false) {
+  if(video_id !== false) {
     picture_url = 'https://img.youtube.com/vi/' + video_id + '/0.jpg';
   }
   document.getElementById('video-thumbnail').src = picture_url;
