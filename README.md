@@ -24,4 +24,4 @@ sytd
 ```
 
 ## Contact
-If you have any suggestions of improvement [join my discord](https://discord.gg/DHnBsRZ)
+If you have any suggestions of improvement [join my discord](https://discord.gg/DHnBsRZ) or message me directly: Neo#3385
