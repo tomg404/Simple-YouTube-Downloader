@@ -54,3 +54,9 @@ eel.expose(update_version_badge)
 function update_version_badge(version) {
   document.getElementById('version-badge').innerHTML = version;
 }
+
+// shows the update available badge
+eel.expose(show_update_available)
+function show_update_available() {
+  document.getElementById('update-available').style="visibility: visible";
+}

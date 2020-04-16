@@ -11,6 +11,8 @@ import youtube_dl as yt
 import configparser
 from threading import Thread
 import datetime
+import urllib.request
+import json
 from . import __version__ as version
 
 
@@ -135,9 +137,24 @@ def check_config():
         with open(config_path, 'a') as f:
             f.write('[MAIN]\nsave_path = \n')
 
+def check_for_update():
+    current_version = version
+    latest_version = ''
+    url = 'https://pypi.org/pypi/sytd/json' # pypi json url
+    try:
+        with urllib.request.urlopen(url) as request:
+            latest_version = json.loads(request.read().decode())['info']['version']
+    except:
+        pass
+
+    if current_version != latest_version:
+        print('Version {} of sytd is available!'.format(latest_version))
+        eel.show_update_available()
+
 
 def run():
     check_config()
+    check_for_update()
     try:
         eel.start('main.html', mode='chrome', port=0, size=(600, 840))
     except (SystemExit, KeyboardInterrupt):
