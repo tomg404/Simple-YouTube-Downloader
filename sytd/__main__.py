@@ -13,7 +13,8 @@ from threading import Thread
 import datetime
 import urllib.request
 import json
-from . import __version__ as version
+from distutils.version import LooseVersion
+from . import __version__ as VERSION
 
 
 class MyLogger(object):
@@ -127,7 +128,7 @@ def update_status_output():
 # updates version badge with current version (gets called in html body onload)
 @eel.expose
 def update_version_badge():
-    eel.update_version_badge('v' + version)
+    eel.update_version_badge('v' + VERSION)
 
 
 # checks if config file exists. if not creates it
@@ -138,7 +139,7 @@ def check_config():
             f.write('[MAIN]\nsave_path = \n')
 
 def check_for_update():
-    current_version = version
+    current_version = VERSION
     latest_version = ''
     url = 'https://pypi.org/pypi/sytd/json' # pypi json url
     try:
@@ -147,7 +148,7 @@ def check_for_update():
     except:
         pass
 
-    if current_version != latest_version:
+    if LooseVersion(current_version) < LooseVersion(latest_version):
         print('Version {} of sytd is available!'.format(latest_version))
         eel.show_update_available()
 
