@@ -6,8 +6,8 @@
 ![](images/demo-small.gif)
 
 ## Installation
-Currently there is only support for **Windows**.
-**Chrome** is required for the application to run as intended.
+* Currently there is only support for **Windows**.
+* **Chrome** is required for the application to run as intended.
 ```
 pip install sytd
 # or
