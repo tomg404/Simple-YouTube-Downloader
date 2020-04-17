@@ -1,6 +1,8 @@
-![PyPI - License](https://img.shields.io/pypi/l/sytd)
+[![Build Status](https://travis-ci.com/tomg404/Simple-YouTube-Downloader.svg?branch=master)](https://travis-ci.com/tomg404/Simple-YouTube-Downloader)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sytd)
 ![PyPI](https://img.shields.io/pypi/v/sytd)
 ![PyPI - Status](https://img.shields.io/pypi/status/sytd)
+![PyPI - License](https://img.shields.io/pypi/l/sytd)
 
 # Simple YouTube Downloader
 ![](images/demo-small.gif)
