@@ -1,12 +1,11 @@
 [![Build Status](https://travis-ci.com/tomg404/Simple-YouTube-Downloader.svg?branch=master)](https://travis-ci.com/tomg404/Simple-YouTube-Downloader)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sytd)
 ![PyPI - Status](https://img.shields.io/pypi/status/sytd)
-
 ![PyPI](https://img.shields.io/pypi/v/sytd)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/sytd)
 ![PyPI - License](https://img.shields.io/pypi/l/sytd)
 
-# Simple YouTube Downloader
+# Simple YouTube Downloader <img src="images/download.svg" width="50em">
 <img align="right" style="padding-left: 3%" src="images/demo-small.gif">
 
 Are you tired of downloading YouTube videos from these scammy looking converter sites named something like
@@ -17,12 +16,12 @@ It just downloads any YouTube video in the best available quality to the path yo
 
 Functionality to download whole playlists and switch to download audio only and more to come!
 
-## Info
+## Info <img src="images/info.svg" width="20em">
 * Currently there is only support for **Windows** and **Linux** as I don't have access to MacOS.
 * **Chrome** is required for the application to run as intended. ([Install Chrome](https://www.google.com/chrome/))
 * **Python 2** is **not** supported
 
-## Installation
+## Installation <img src="images/arrow-down-circle.svg" width="20em">
 
 ```
 pip install sytd
@@ -30,7 +29,7 @@ pip install sytd
 easy_install sytd
 ```
 
-## Usage
+## Usage <img src="images/code.svg" width="20em">
 ```
 python -m sytd
 # or
@@ -39,5 +38,5 @@ simple-youtube-downloader
 sytd
 ```
 
-## Contact
+## Contact <img src="images/send.svg" width="20em">
 If you have any suggestions of improvement or want to report bugs [join my discord](https://discord.gg/DHnBsRZ) or message me directly: Neo#3385
