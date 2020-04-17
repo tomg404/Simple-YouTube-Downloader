@@ -87,11 +87,18 @@ def hook(d):
         eel.update_status('')
 
         if d['status'] == 'downloading':
-            filename = os.path.basename(d['filename'])
-            speed = str(round(d['speed'] / 1000000, 2))  # speed in mb/s
-            elapsed_time = str(datetime.timedelta(seconds=round(d['elapsed']))) # elapsed time
-            estimated_time = str(datetime.timedelta(seconds=d['eta'])) # estimated time
-            eel.update_status('Downloading ...\nSpeed: {} mb/s | {} / {}'.format(speed, elapsed_time, estimated_time))
+            try:
+                filename = os.path.basename(d['filename'])
+                speed = round(d['speed'] / 1000000, 2)  # speed in mb/s
+                elapsed_time = datetime.timedelta(seconds=round(d['elapsed'])) # elapsed time
+                estimated_time = datetime.timedelta(seconds=d['eta']) # estimated time
+            except TypeError:
+                speed = 0   # backup values because the above ones sometimes fail
+                elapsed_time = 0
+                estimated_time = 0
+
+            eel.update_status('Downloading ...\nSpeed: {:.2f} mb/s | {} / {}'. \
+                              format(speed, elapsed_time, estimated_time))
 
         if d['status'] == 'finished':
             eel.update_status('Download completed successfully ✔️')
@@ -170,8 +177,8 @@ def run():
     except (SystemExit, KeyboardInterrupt):
         pass
     except OSError:
-        print('Chrome is required to run this program. Install chrome here: \
-              https://www.google.com/chrome/')
+        print('Chrome is required to run this program. Install chrome here: '
+              'https://www.google.com/chrome/')
 
 
 if __name__ == '__main__':
