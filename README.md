@@ -7,6 +7,14 @@
 ![PyPI - License](https://img.shields.io/pypi/l/sytd)
 
 # Simple YouTube Downloader
+Are you tired of downloading YouTube videos from these scammy looking converter sites named something like
+``http://online-youtube-converter-mp4.gc`` that show tons of ads on their site?
+
+Then [install](https://github.com/tomg404/Simple-YouTube-Downloader#Installation) my simple little program.
+It just downloads any YouTube video in the best available quality to the path you specified.
+
+Functionality to download whole playlists and switch to download audio only and more to come!
+
 ![](images/demo-small.gif)
 
 ## Info
