@@ -6,8 +6,10 @@
 ![](images/demo-small.gif)
 
 ## Installation
-* Currently there is only support for **Windows** as I don't have access to other machines.
+* Currently there is only support for **Windows** and **Linux** as I don't have access to MacOS.
 * **Chrome** is required for the application to run as intended. ([Install Chrome](https://www.google.com/chrome/))
+* **Python 2** is not supported
+
 ```
 pip install sytd
 # or
