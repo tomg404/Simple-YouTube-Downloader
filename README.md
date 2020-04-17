@@ -5,10 +5,12 @@
 # Simple YouTube Downloader
 ![](images/demo-small.gif)
 
-## Installation
+## Info
 * Currently there is only support for **Windows** and **Linux** as I don't have access to MacOS.
 * **Chrome** is required for the application to run as intended. ([Install Chrome](https://www.google.com/chrome/))
-* **Python 2** is not supported
+* **Python 2** is **not** supported
+
+## Installation
 
 ```
 pip install sytd
