@@ -6,7 +6,6 @@ import os
 import sys
 import eel
 from pathlib import Path
-from tkinter import Tk, filedialog
 import youtube_dl as yt
 import configparser
 from threading import Thread
@@ -15,6 +14,12 @@ import urllib.request
 import json
 from distutils.version import LooseVersion
 from . import __version__ as VERSION
+try:    # check if tkinter is present. if not print error
+    from tkinter import Tk, filedialog
+except ImportError:
+    print('Error: tkinter not found')
+    print('On linux you can install tkinter by executing:')
+    print('sudo apt-get install python3-tk')
 
 
 class MyLogger(object):
@@ -164,6 +169,9 @@ def run():
                   close_callback=close)
     except (SystemExit, KeyboardInterrupt):
         pass
+    except OSError:
+        print('Chrome is required to run this program. Install chrome here: \
+              https://www.google.com/chrome/')
 
 
 if __name__ == '__main__':
