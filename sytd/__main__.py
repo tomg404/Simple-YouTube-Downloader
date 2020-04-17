@@ -152,12 +152,16 @@ def check_for_update():
         print('Version {} of sytd is available!'.format(latest_version))
         eel.show_update_available()
 
+def close(path,sockets):
+    print('Bye...')
+    sys.exit(0)
 
 def run():
     check_config()
     check_for_update()
     try:
-        eel.start('main.html', mode='chrome', port=0, size=(600, 840))
+        eel.start('main.html', mode='chrome', port=0, size=(600, 840),
+                  close_callback=close)
     except (SystemExit, KeyboardInterrupt):
         pass
 
