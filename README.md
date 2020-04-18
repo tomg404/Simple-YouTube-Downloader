@@ -2,6 +2,7 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sytd)
 ![PyPI - Status](https://img.shields.io/pypi/status/sytd)
 ![PyPI](https://img.shields.io/pypi/v/sytd)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/sytd)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/sytd)
 ![PyPI - License](https://img.shields.io/pypi/l/sytd)
 
