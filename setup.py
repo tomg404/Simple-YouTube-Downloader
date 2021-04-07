@@ -17,7 +17,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "Eel==0.11.0",
-        "bottle==0.12.18",
+        "bottle==0.12.19",
         "gevent==1.5.0",
         "youtube-dl==2020.3.24",
     ],
